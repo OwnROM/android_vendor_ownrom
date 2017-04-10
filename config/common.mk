@@ -1,5 +1,22 @@
 PRODUCT_BRAND ?= OwnROM
 
+# Bootanimation
+TARGET_BOOTANIMATION_720P := $(shell \
+   if [ $(TARGET_SCREEN_WIDTH) -le 720 ]; then \
+      echo 'true'; \
+   else \
+      echo ''; \
+   fi )
+
+ifeq ($(TARGET_BOOTANIMATION_720P), true)
+PRODUCT_COPY_FILES += \
+    vendor/ownrom/bootanimation/720.zip:system/media/bootanimation.zip
+else
+PRODUCT_COPY_FILES += \
+    vendor/ownrom/bootanimation/1080.zip:system/media/bootanimation.zip
+endif
+######
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
@@ -139,6 +156,10 @@ PRODUCT_PACKAGES += \
     WallpaperPicker \
     WeatherProvider
 
+# Custom Prebuilt OwnROM Packages
+PRODUCT_COPY_FILES += \
+vendor/ownrom/prebuilt/apps/Amaze.apk:system/priv-app/Amaze/Amaze.apk
+
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
@@ -253,15 +274,15 @@ DEVICE_PACKAGE_OVERLAYS += vendor/ownrom/overlay/common
 OWNROM_BUILDTYPE ?= UNOFFICIAL
 OWN_VERSION := 5.0
 OWNROM_VERSION := OwnROM-$(OWNROM_BUILDTYPE)-v$(OWN_VERSION)-$(OWNROM_BUILD)-$(shell date +%Y%m%d)
+OWNROM_DISPLAY_VERSION := $(OWNROM_BUILDTYPE)-$(OWN_VERSION)-$(shell date +%Y%m%d)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 	ro.own.version=$(OWN_VERSION) \
     ro.ownrom.version=$(OWNROM_VERSION) \
     ro.ownrom.releasetype=$(OWNROM_BUILDTYPE) \
     ro.modversion=$(OWNROM_VERSION) \
+    ro.ownrom.display.version=$(OWNROM_DISPLAY_VERSION) \
     ro.lineagelegal.url=https://lineageos.org/legal
-
-OWNROM_DISPLAY_VERSION := $(OWNROM_BUILDTYPE)-$(OWN_VERSION)-$(shell date +%Y%m%d)
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/ownrom/build/target/product/security/lineage
