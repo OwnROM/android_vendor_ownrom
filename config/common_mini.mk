@@ -1,4 +1,4 @@
-# Inherit mini common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit mini common OwnROM stuff
+$(call inherit-product, vendor/ownrom/config/common.mk)
 
 PRODUCT_SIZE := mini

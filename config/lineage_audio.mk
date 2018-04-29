@@ -1,10 +1,10 @@
 #
-# Lineage Audio Files
+# OwnROM Audio Files
 #
 
-ALARM_PATH := vendor/lineage/prebuilt/common/media/audio/alarms
-NOTIFICATION_PATH := vendor/lineage/prebuilt/common/media/audio/notifications
-RINGTONE_PATH := vendor/lineage/prebuilt/common/media/audio/ringtones
+ALARM_PATH := vendor/ownrom/prebuilt/common/media/audio/alarms
+NOTIFICATION_PATH := vendor/ownrom/prebuilt/common/media/audio/notifications
+RINGTONE_PATH := vendor/ownrom/prebuilt/common/media/audio/ringtones
 
 # Alarms
 PRODUCT_COPY_FILES += \

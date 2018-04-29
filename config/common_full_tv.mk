@@ -1,6 +1,6 @@
-# Inherit full common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full.mk)
+# Inherit full common OwnROM stuff
+$(call inherit-product, vendor/ownrom/config/common_full.mk)
 
 PRODUCT_PACKAGES += AppDrawer
 
-DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/tv
+DEVICE_PACKAGE_OVERLAYS += vendor/ownrom/overlay/tv
