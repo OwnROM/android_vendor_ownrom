@@ -156,10 +156,6 @@ PRODUCT_PACKAGES += \
     WallpaperPicker \
     WeatherProvider
 
-# Custom Prebuilt OwnROM Packages
-PRODUCT_COPY_FILES += \
-vendor/ownrom/prebuilt/apps/Amaze.apk:system/priv-app/Amaze/Amaze.apk
-
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
